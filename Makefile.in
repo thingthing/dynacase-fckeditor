@@ -1,0 +1,29 @@
+PACKAGE=@PACKAGE@
+VERSION=@VERSION@
+RELEASE=@RELEASE@
+utildir=@PUBRULE@
+pubdir=@prefix@
+appname=@APPNAME@
+
+pages_not_xml=info.xml
+pages_not_php=fam2po.php po2js.php
+
+include $(utildir)/PubRule
+
+$(pubdir):
+	mkdir -p $@
+
+$(pubdir)/programs: $(pubdir)
+	mkdir -p $@
+
+$(pubdir)/programs/fckeditor_install: programs/fckeditor_install $(pubdir)/programs
+	cp $< $@
+	chmod a+x $@
+
+$(pubdir)/$(appname): $(pubdir)
+	mkdir -p $@
+
+$(pubdir)/$(appname)/.htaccess: htaccess $(pubdir)/$(appname)
+	cp htaccess $(pubdir)/fckeditor/.htaccess
+
+publish: $(pubdir)/programs/fckeditor_install $(pubdir)/$(appname)/.htaccess

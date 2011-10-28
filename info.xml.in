@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<module name="dynacase-fckeditor" version="@VERSION@" release="@RELEASE@" basecomponent="yes" >
+
+  <description>This HTML text editor brings to the web many of the powerful functionalities of desktop editors like MS Word. It's lightweight and doesnt require any kind of installation on the client computer.</description>
+  <replaces>
+        <module name="freedom-fckeditor" />
+  </replaces>
+  <requires>
+    <module name="dynacase-platform" />
+  </requires>
+
+  <parameters>
+    <param name="fckeditor_url" label="FCKeditor download URL" type="text" default="http://ftp.dynacase.org/third-party/FCKeditor_2.6.3.tar.gz" />
+  </parameters>
+
+  <pre-install>
+    <check type="syscommand" command="gunzip" />
+    <check type="syscommand" command="tar" />
+    <check type="syscommand" command="find" />
+    <check type="syscommand" command="chmod" />
+  </pre-install>
+
+  <pre-upgrade>
+    <check type="syscommand" command="gunzip" />
+    <check type="syscommand" command="tar" />
+    <check type="syscommand" command="find" />
+    <check type="syscommand" command="chmod" />
+  </pre-upgrade>
+
+  <post-install>
+    <download href="@fckeditor_url" action="programs/fckeditor_install"><label lang="en">Download and install FCKeditor</label></download>
+  </post-install>
+
+  <post-upgrade>
+    <download href="@fckeditor_url" action="programs/fckeditor_install"><label lang="en">Download and install FCKeditor</label></download>
+  </post-upgrade>
+
+</module>
