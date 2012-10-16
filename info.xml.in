@@ -10,7 +10,7 @@
   </requires>
 
   <parameters>
-    <param name="fckeditor_url" label="FCKeditor download URL" type="text" default="http://ftp.dynacase.org/third-party/FCKeditor_2.6.3.tar.gz" />
+    <param name="fckeditor_url" label="FCKeditor download URL" type="text" default="http://ftp.dynacase.org/third-party/FCKeditor_2.6.3.tar.gz" volatile="yes" onupgrade="W" />
   </parameters>
 
   <pre-install>
