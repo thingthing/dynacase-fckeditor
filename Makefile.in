@@ -26,4 +26,11 @@ $(pubdir)/$(appname): $(pubdir)
 $(pubdir)/$(appname)/.htaccess: htaccess $(pubdir)/$(appname)
 	cp htaccess $(pubdir)/fckeditor/.htaccess
 
-publish: $(pubdir)/programs/fckeditor_install $(pubdir)/$(appname)/.htaccess
+$(pubdir)/$(appname)/fckeditor_2.6.10.diff: fckeditor_2.6.10.diff $(pubdir)/$(appname)
+	cp $< $@
+
+publish: $(pubdir)/programs/fckeditor_install $(pubdir)/$(appname)/.htaccess $(pubdir)/$(appname)/fckeditor_2.6.10.diff
+
+clean:
+	rm -f *.*~ config.* Makefile configure info.xml\
+		$(PACKAGE)-$(VERSION)*.webinst \

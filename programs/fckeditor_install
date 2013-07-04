@@ -117,6 +117,16 @@ if( $ret !== 0 ) {
   exit(1);
 }
 
+// Patch fckeditor
+$patch = 'fckeditor/fckeditor_2.6.10.diff';
+$cmd = sprintf("patch -p0 < %s", escapeshellarg($patch));
+system($cmd, $ret);
+
+if ($ret !== 0) {
+    printf("Error patching fckeditor with patch file '%s'.", $patch);
+    exit(1);
+}
+
 // Cleanup tempdir
 $cmd = sprintf('rm -Rf "%s"', escapeshellcmd($tempdir));
 system($cmd, $ret);
